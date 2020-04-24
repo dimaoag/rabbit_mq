@@ -1,1 +1,2 @@
 docker-compose run --rm frontend-nodejs npm install
+docker-compose run --rm frontend-nodejs npm run build
