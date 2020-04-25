@@ -12,6 +12,7 @@
     "laminas/laminas-config-aggregator": "^1.2",
     "psr/http-server-handler": "^1.0",
     "slim/slim": "^3.11",
+    "symfony/console": "^4.1",
     "symfony/dotenv": "^4.1"
 
   },
@@ -30,6 +31,7 @@
     }
   },
   "scripts": {
+    "app": "php bin/app.php --ansi",
     "test": "phpunit --colors=always"
   }
 }
