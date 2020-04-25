@@ -1,6 +1,6 @@
 FROM php:7.1-cli
 
-RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev wget \
+RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev wget unzip zip\
     && docker-php-ext-install mcrypt zip
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
