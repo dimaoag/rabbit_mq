@@ -2,25 +2,15 @@
 
 declare(strict_types=1);
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Api\Http\Action;
 
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
-$config = [
-    'settings' => [
-        'addContentLengthHeader' => false,
-    ],
-];
+$config = require 'config/config.php';
+$container = new \Slim\Container($config);
+$app = new \Slim\App($container);
 
-$app = new \Slim\App($config);
-
-$app->get('/', function (Request $request, Response $response) {
-    return $response->withJson([
-        'name' => 'App API',
-        'version' => '1.0',
-    ]);
-});
+$app->get('/', Action\HomeAction::class . ':handle');
 
 $app->run();
