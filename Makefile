@@ -3,6 +3,7 @@ init: docker-clear docker-up
 down: docker-clear
 dev: frontend-dev-build
 watch: frontend-watch
+install: frontend-install
 
 docker-clear:
 	docker-compose down --remove-orphans
@@ -15,3 +16,6 @@ frontend-dev-build:
 
 frontend-watch:
 	docker-compose run --rm frontend-nodejs npm run watch
+
+frontend-install:
+	docker-compose run --rm frontend-nodejs npm install
