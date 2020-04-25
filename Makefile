@@ -4,6 +4,7 @@ down: docker-clear
 dev: frontend-dev-build
 watch: frontend-watch
 install: frontend-install
+test: api-test
 
 docker-clear:
 	docker-compose down --remove-orphans
@@ -25,3 +26,6 @@ composer-install:
 
 composer-update:
 	docker-compose run --rm api-php-cli composer update
+
+api-test:
+	docker-compose run --rm api-php-cli composer test
