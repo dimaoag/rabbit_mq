@@ -19,3 +19,9 @@ frontend-watch:
 
 frontend-install:
 	docker-compose run --rm frontend-nodejs npm install
+
+composer-install:
+	docker-compose run --rm api-php-cli composer install
+
+composer-update:
+	docker-compose run --rm api-php-cli composer update
