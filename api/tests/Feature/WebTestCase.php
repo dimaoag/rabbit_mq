@@ -12,6 +12,10 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\App;
+use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+use Doctrine\Common\DataFixtures\Loader;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\ORM\EntityManagerInterface;
 
 class WebTestCase extends TestCase
 {
@@ -34,6 +38,23 @@ class WebTestCase extends TestCase
         $response = $this->app()->process($request, new Response());
         $response->getBody()->rewind();
         return $response;
+    }
+
+    protected function loadFixtures(array $fixtures): void
+    {
+        $container = $this->container();
+        $em = $container->get(EntityManagerInterface::class);
+        $loader = new Loader();
+        foreach ($fixtures as $class) {
+            if ($container->has($class)) {
+                $fixture = $container->get($class);
+            } else {
+                $fixture = new $class;
+            }
+            $loader->addFixture($fixture);
+        }
+        $executor = new ORMExecutor($em, new ORMPurger($em));
+        $executor->execute($loader->getFixtures());
     }
 
     private function app(): App
