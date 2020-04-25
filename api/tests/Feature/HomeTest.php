@@ -1,18 +1,14 @@
 <?php
 
-namespace Api\Test\Unit\Http\Action;
+declare(strict_types=1);
 
-use Api\Http\Action\HomeAction;
-use Laminas\Diactoros\ServerRequest;
-use PHPUnit\Framework\TestCase;
+namespace Api\Test\Feature;
 
-class HomeActionTest extends TestCase
+class HomeTest extends WebTestCase
 {
     public function testSuccess(): void
     {
-        $action = new HomeAction();
-
-        $response = $action->handle(new ServerRequest());
+        $response = $this->get('/');
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertJson($content = $response->getBody()->getContents());
