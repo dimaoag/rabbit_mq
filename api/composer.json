@@ -8,6 +8,7 @@
     "ext-mbstring": "^7.1",
     "doctrine/migrations": "^1.8",
     "doctrine/orm": "^2.6",
+    "geekdevs/swift-mailer-extensions": "^2.0",
     "monolog/monolog": "^1.23",
     "laminas/laminas-config-aggregator": "^1.2",
     "laminas/laminas-diactoros": "^2.0",
@@ -16,6 +17,7 @@
     "psr/http-server-middleware": "^1.0",
     "ramsey/uuid": "^3.8",
     "slim/slim": "^3.11",
+    "swiftmailer/swiftmailer": "^6.1",
     "symfony/validator": "^4.1",
     "symfony/console": "^4.1",
     "symfony/dotenv": "^4.1"
