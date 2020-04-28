@@ -14,7 +14,7 @@ services:
     frontend-nodejs:
         image: node:10.11-jessie
         volumes:
-            - ./frontend:/var/www/frontend
+            - ./frontend:/var/www/frontendw
         working_dir: /var/www/frontend
         tty: true
 
