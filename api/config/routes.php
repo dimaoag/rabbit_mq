@@ -28,4 +28,7 @@ return function (App $app, ContainerInterface $container) {
         $this->get('', Action\Profile\ShowAction::class . ':handle');
     })->add($auth);
 
+    $app->group('/author', function () {
+        $this->get('', Action\Author\ShowAction::class . ':handle');
+    })->add($auth);
 };
