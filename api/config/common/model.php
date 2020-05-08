@@ -56,16 +56,22 @@ return [
         );
     },
 
+    ReadModel\Video\AuthorReadRepository::class => function (ContainerInterface $container) {
+        return new Infrastructure\ReadModel\Video\DoctrineAuthorReadRepository(
+            $container->get(\Doctrine\ORM\EntityManagerInterface::class)
+        );
+    },
+
+    ReadModel\Video\VideoReadRepository::class => function (ContainerInterface $container) {
+        return new Infrastructure\ReadModel\Video\DoctrineVideoReadRepository(
+            $container->get(\Doctrine\ORM\EntityManagerInterface::class)
+        );
+    },
+
     VideoModel\UseCase\Author\Create\Handler::class => function (ContainerInterface $container) {
         return new VideoModel\UseCase\Author\Create\Handler(
             $container->get(Api\Model\Flusher::class),
             $container->get(VideoModel\Entity\Author\AuthorRepository::class)
-        );
-    },
-
-    ReadModel\Video\AuthorReadRepository::class => function (ContainerInterface $container) {
-        return new Infrastructure\ReadModel\Video\DoctrineAuthorReadRepository(
-            $container->get(\Doctrine\ORM\EntityManagerInterface::class)
         );
     },
 
