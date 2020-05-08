@@ -30,7 +30,7 @@ class SuccessTest extends WebTestCase
 
     public function testGuest(): void
     {
-        $response = $this->post('/author/video/create');
+        $response = $this->post('/author/videos/create');
         self::assertEquals(401, $response->getStatusCode());
     }
 
@@ -40,7 +40,7 @@ class SuccessTest extends WebTestCase
 
         $response = $this->request(
             (new ServerRequest())
-                ->withUri(new Uri('http://test/author/video/create'))
+                ->withUri(new Uri('http://test/author/videos/create'))
                 ->withMethod('POST')
                 ->withHeader('Authorization', $auth->getHeaders()['Authorization'])
                 ->withUploadedFiles([
