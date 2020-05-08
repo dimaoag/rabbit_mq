@@ -7,6 +7,7 @@ use Api\Http\Middleware;
 use Api\Http\Validator\Validator;
 use Api\Model;
 use Api\ReadModel;
+use Api\Http\VideoUrl;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
@@ -86,7 +87,8 @@ return [
     Action\Author\Video\IndexAction::class => function (ContainerInterface $container) {
         return new Action\Author\Video\IndexAction(
             $container->get(ReadModel\Video\AuthorReadRepository::class),
-            $container->get(ReadModel\Video\VideoReadRepository::class)
+            $container->get(ReadModel\Video\VideoReadRepository::class),
+            $container->get(VideoUrl::class)
         );
     },
 
@@ -99,7 +101,8 @@ return [
 
     Action\Author\Video\ShowAction::class => function (ContainerInterface $container) {
         return new Action\Author\Video\ShowAction(
-            $container->get(ReadModel\Video\VideoReadRepository::class)
+            $container->get(ReadModel\Video\VideoReadRepository::class),
+            $container->get(VideoUrl::class)
         );
     },
 ];
