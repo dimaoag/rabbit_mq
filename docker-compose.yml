@@ -35,6 +35,7 @@ services:
             dockerfile: php-fpm.docker
         volumes:
             - ./api:/var/www/api
+            - ./storage:/var/www/storage
         depends_on:
             - api-postgres
             - mailer
@@ -45,6 +46,7 @@ services:
             dockerfile: php-cli.docker
         volumes:
             - ./api:/var/www/api
+            - ./storage:/var/www/storage
         depends_on:
             - api-postgres
             - mailer
