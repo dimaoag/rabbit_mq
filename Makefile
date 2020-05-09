@@ -1,6 +1,6 @@
 up: docker-up
 init: 	docker-clear docker-up \
- 		api-permissions api-env composer-install api-genrsa api-migrations api-fixtures \
+ 		api-permissions api-env composer-install api-genrsa pause api-migrations api-fixtures \
  		frontend-env frontend-install frontend-build storage-permissions
 
 build: docker-clear docker-up
@@ -15,6 +15,9 @@ docker-clear:
 
 docker-up:
 	docker-compose up --build -d
+
+pause:
+	sleep 5
 
 api-permissions:
 	sudo chmod 777 api/var
@@ -66,4 +69,4 @@ frontend-install:
 	docker-compose run --rm frontend-nodejs npm install
 
 storage-permissions:
-	sudo chown 777 storage/public/video
+	sudo chmod 777 storage/public/video
