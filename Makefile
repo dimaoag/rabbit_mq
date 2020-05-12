@@ -2,7 +2,7 @@ up: docker-up
 init: 	docker-clear docker-up \
  		api-permissions api-env composer-install api-genrsa pause api-migrations api-fixtures \
  		frontend-env frontend-install frontend-build storage-permissions \
- 		websocket-start
+ 		websocket-env websocket-key websocket-install websocket-start
 
 build: docker-clear docker-up
 down: docker-clear
@@ -79,6 +79,14 @@ storage-permissions:
 
 
 #################################################################################################
+
+websocket-env:
+	docker-compose exec websocket-nodejs rm -f .env
+	docker-compose exec websocket-nodejs ln -sr .env.example .env
+
+websocket-key:
+	rm -f ./websocket/public.key
+	cp ./api/public.key ./websocket/public.key
 
 websocket-install:
 	docker-compose exec websocket-nodejs npm install
