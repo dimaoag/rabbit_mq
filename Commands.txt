@@ -7,3 +7,6 @@ docker-compose run --rm api-php-cli composer app migrations:version
 
 docker-compose run --rm api-php-cli openssl genrsa -out private.key 2048
 docker-compose run --rm api-php-cli openssl rsa -in private.key > public.key
+
+docker-compose run --rm api-php-cli php bin/app.php kafka:demo:produce
+docker-compose run --rm api-php-cli php bin/app.php kafka:demo:consume
