@@ -1,7 +1,8 @@
 up: docker-up
 init: 	docker-clear docker-up \
  		api-permissions api-env composer-install api-genrsa pause api-migrations api-fixtures \
- 		frontend-env frontend-install frontend-build storage-permissions
+ 		frontend-env frontend-install frontend-build storage-permissions \
+ 		websocket-start
 
 build: docker-clear docker-up
 down: docker-clear
@@ -18,6 +19,8 @@ docker-up:
 
 pause:
 	sleep 5
+
+###############################################################################################
 
 api-permissions:
 	sudo chmod 777 api/var
@@ -52,6 +55,9 @@ api-migrations:
 api-fixtures:
 	docker-compose run --rm api-php-cli composer app fixtures:load
 
+
+####################################################################################################
+
 frontend-env:
 	docker-compose exec frontend-nodejs rm -f .env.local
 	docker-compose exec frontend-nodejs ln -sr .env.local.example .env.local
@@ -70,3 +76,12 @@ frontend-install:
 
 storage-permissions:
 	sudo chmod 777 storage/public/video
+
+
+#################################################################################################
+
+websocket-install:
+	docker-compose exec websocket-nodejs npm install
+
+websocket-start:
+	docker-compose exec websocket-nodejs npm run start
