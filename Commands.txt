@@ -10,3 +10,5 @@ docker-compose run --rm api-php-cli openssl rsa -in private.key > public.key
 
 docker-compose run --rm api-php-cli php bin/app.php kafka:demo:produce
 docker-compose run --rm api-php-cli php bin/app.php kafka:demo:consume
+
+docker-compose run --rm api-php-cli php bin/app.php kafka:demo:produce 90ba3969-911a-4f99-9cdf-01091699a599
