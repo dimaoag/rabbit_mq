@@ -11,6 +11,7 @@ use Api\Model\Video\Entity\Video\Event\VideoCreated;
 use Api\Model\Video\Entity\Video\Event\VideoPublished;
 use Api\Model\Video\Entity\Video\Event\VideoRemoved;
 use Doctrine\Common\Collections\ArrayCollection;
+use Api\Model\Video\Entity\Video\Event\VideoFileAdded;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -98,7 +99,8 @@ class Video implements AggregateRoot
 
     public function addFile(string $path, string $format, Size $size): void
     {
-        $this->files->add(new File($this, $path, $format, $size));
+        $this->files->add($file = new File($this, $path, $format, $size));
+        $this->recordEvent(new VideoFileAdded($this->id, $this->author->getId(), $file));
     }
 
     public function publish(\DateTimeImmutable $date): void
