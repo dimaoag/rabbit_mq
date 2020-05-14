@@ -41,7 +41,7 @@ composer-install:
 	docker-compose run --rm api-php-cli composer install
 
 composer-update:
-	docker-compose run --rm api-php-cli composer update
+	docker-compose run --rm api-php-cli composer update --lock
 
 api-test:
 	docker-compose run --rm api-php-cli composer test
