@@ -4,15 +4,21 @@
             <h1>{{ video.name }}</h1>
 
             <video controls class="mb-3" :height="height" v-if="files">
-                <source :src="file.url" :type="'video/' + file.format" v-for="file in files">
+                <source
+                    :src="file.url"
+                    :type="'video/' + file.format"
+                    v-for="(file, index) in files"
+                    :key="index"
+                >
             </video>
 
             <b-form-group label="Size:">
                 <b-button-group>
                     <b-button
-                            v-for="current in heights"
+                            v-for="(current, index) in heights"
                             :variant="'outline-dark' + (current === height ? ' active' : '')"
                             @click="height = current"
+                            :key="index"
                     >{{ current }}</b-button>
                 </b-button-group>
             </b-form-group>

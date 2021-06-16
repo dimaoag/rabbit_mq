@@ -5,6 +5,7 @@
                 variant="primary"
                 v-for="(notification, index) in notifications"
                 @dismissed="close(index)"
+                :key="index"
         >
             {{ notification }}
         </b-alert>
@@ -12,8 +13,6 @@
 </template>
 
 <script>
-    import axios from "axios";
-
     export default {
         name: 'Notifications',
         computed: {

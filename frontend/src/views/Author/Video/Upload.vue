@@ -75,8 +75,6 @@
                             } else if (error.response.data.errors) {
                                 this.errors = error.response.data.errors;
                             }
-                        } else {
-                            console.log(error.message);
                         }
                     });
             }
