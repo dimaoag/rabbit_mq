@@ -6,6 +6,7 @@ init: 	docker-clear docker-up \
 
 build: docker-clear docker-up
 down: docker-clear
+restart: down up
 dev: frontend-dev-build
 watch: frontend-watch
 install: frontend-install
@@ -15,12 +16,23 @@ docker-clear:
 	docker-compose down --remove-orphans
 
 docker-up:
-	docker-compose up --build -d
+	docker-compose up -d
 
 pause:
 	sleep 5
 
 ###############################################################################################
+
+api-check: api-validate-schema api-lint api-analyze api-test
+
+api-validate-schema:
+	docker-compose run --rm api-php-cli composer app orm:validate-schema
+
+api-lint:
+	echo 'api-lint'
+
+api-analyze:
+	echo 'api-analyze'
 
 api-permissions:
 	sudo chmod 777 api/var

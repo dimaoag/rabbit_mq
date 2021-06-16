@@ -22,7 +22,7 @@ class File
 
     /**
      * @var Video
-     * @ORM\ManyToOne(targetEntity="Video")
+     * @ORM\ManyToOne(targetEntity="Video", inversedBy="files")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $video;

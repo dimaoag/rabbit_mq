@@ -54,7 +54,7 @@ class Video implements AggregateRoot
      */
     private $origin;
     /**
-     * @var Thumbnail
+     * @var Thumbnail|null
      * @ORM\Embedded(class="Thumbnail")
      */
     private $thumbnail;
