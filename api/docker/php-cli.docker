@@ -6,6 +6,6 @@ RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev libpq-dev wget
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet
+RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet --1
 
 WORKDIR /var/www
