@@ -37,6 +37,9 @@ api-genrsa:
 	docker-compose exec api-php-cli openssl genrsa -out private.key 2048
 	docker-compose exec api-php-cli openssl rsa -in private.key -pubout -out public.key
 
+bash:
+	docker-compose run --rm api-php-cli bash
+
 composer-install:
 	docker-compose run --rm api-php-cli composer install
 
